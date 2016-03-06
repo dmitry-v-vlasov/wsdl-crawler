@@ -1,0 +1,211 @@
+{
+    "id": "http://whitehotstone.org/security/wsdl/crawler#",
+    "$schema": "http://whitehotstone.org/security/wsdl/crawler#",
+    "title": "Configuration",
+    "description": "Sensitive Data Tool Configuration File Schema",
+    "type": "object",
+    "properties": {
+        "patterns": {
+            "type": "object",
+            "title": "Patterns",
+            "properties": {
+                "masked": {
+                    "type": "array",
+                    "title": "maskedPatterns",
+                    "items": {
+                        "type": "object",
+                        "title": "MaskedPattern",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "constraints": {
+                                "type": "object",
+                                "title": "MaskedPatternConstraints",
+                                "properties": {
+                                    "left": {
+                                        "type": "integer",
+                                        "title": "left"
+                                    },
+                                    "right": {
+                                        "type": "integer",
+                                        "title": "right"
+                                    }
+                                },
+                                "required": [
+                                    "left",
+                                    "right"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "value",
+                            "constraints"
+                        ]
+                    }
+                },
+                "hidden": {
+                    "type": "array",
+                    "title": "hiddenPatterns",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
+                "keep-extra-top": {
+                    "type": "integer",
+                    "title": "keepExtraTop",
+                    "default": 0
+                }
+            }
+        },
+        "provider-keywords": {
+            "type": "array",
+            "title": "providerKeywords",
+            "items": {
+                "type": "object",
+                "title": "SourceProviderKeywords",
+                "properties": {
+                    "source-type": {
+                        "title": "sourceType",
+                        "type": "string"
+                    },
+                    "keywords": {
+                        "type": "array",
+                        "title": "keywords",
+                        "items": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                },
+                "required": [
+                    "source-type",
+                    "keywords"
+                ]
+            }
+        },
+        "service-types": {
+            "type": "array",
+            "title": "serviceTypes",
+            "items": {
+                "type": "object",
+                "title": "ServiceType",
+                "properties": {
+                    "service-type": {
+                        "title": "serviceType",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "title": "tags",
+                        "items": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                }
+            }
+        },
+        "generator": {
+            "type": "object",
+            "title": "Generator",
+            "properties": {
+                "sql": {
+                    "type": "object",
+                    "title": "SqlGenerator",
+                    "properties": {
+                        "artifact-id-mapping": {
+                            "type": "array",
+                            "title": "artifactIdMapping",
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            }
+                        },
+                        "service-name-mapping": {
+                            "type": "array",
+                            "title": "artifactIdMapping",
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            }
+                        },
+                        "config-names": {
+                            "type": "object",
+                            "title": "ConfigurationNames",
+                            "properties": {
+                                "pattern-masked-incoming": {
+                                    "type": "string",
+                                    "title": "patternMaskedIncoming",
+                                    "minLength": 1
+                                },
+                                "pattern-masked-outcoming": {
+                                    "type": "string",
+                                    "title": "patternMaskedOutcoming",
+                                    "minLength": 1
+                                },
+                                "pattern-hidden-incoming": {
+                                    "type": "string",
+                                    "title": "patternHiddenIncoming",
+                                    "minLength": 1
+                                },
+                                "pattern-hidden-outcoming": {
+                                    "type": "string",
+                                    "title": "patternHiddenOutcoming",
+                                    "minLength": 1
+                                }
+                            },
+                            "required": [
+                                "pattern-masked-incoming",
+                                "pattern-masked-outcoming",
+                                "pattern-hidden-incoming",
+                                "pattern-hidden-outcoming"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "config-names"
+                    ]
+                },
+                "merge-strateries": {
+                    "type": "array",
+                    "title": "mergeStrategies",
+                    "items": {
+                        "type": "object",
+                        "title": "MergeServiceStrategy",
+                        "properties": {
+                            "service-type": {
+                                "title": "serviceType",
+                                "type": "string"
+                            },
+                            "merge-strategies": {
+                                "title": "mergeStrategies",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "patterns",
+        "provider-keywords",
+        "generator"
+    ]
+}

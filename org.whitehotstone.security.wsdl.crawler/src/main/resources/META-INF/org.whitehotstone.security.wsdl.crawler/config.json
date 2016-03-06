@@ -1,0 +1,68 @@
+{
+    "dictionary": {
+        "masked": [
+            {"value": "surname","constraints": {"left": 4, "right": 6}},
+            {"value": "address","constraints": {"left": 4, "right": 6}},
+            {"value": "bank-account","constraints": {"left": 4, "right": 6}}
+        ],
+
+        "hidden": [
+            "login",
+            "password",
+            "email"
+        ],
+        "keep-extra-top": 1,
+        "swallow-partial-patterns": "true"
+    },
+
+    "sources": {
+        "wsdl": {
+            "service-types": [
+                { "service-type": "synchronous/provider", "tags": ["whitehotstone/services"] },
+                {
+                    "service-type": "synchronous/backend",
+                    "tags": [
+                        "whitehotstone/services"
+                    ]
+                },
+                { "service-type": "asynchronous/backend", "tags": ["whitehotstone/services"] }
+            ],
+
+            "service-definitions": [
+                { "id": "whitehotstone-services", "namespace": "http://whitehotstone/services": "WhitehotstoneServices" }
+            ]
+        }
+    },
+
+    "source-handling": {
+        "artifact-ids": [
+            ["whitehotstone-services", "whitehotstone-services"]
+        ],
+
+        "wsdl": {
+            "merge-strategies": [
+	            { "service-type": "synchronous/provider", "merge-strategies": ["service-operations"] },
+	            { "service-type": "synchronous/backend", "merge-strategies": ["services"] },
+	            { "service-type": "asynchronous/backend", "merge-strategies": ["async-service-operation-messages"] }
+            ]
+        }
+    },
+
+    "generator": {
+        "sql-config": {
+            "wsdl": {
+                "service-mappings": [
+                    {"service-definition-id": "whitehotstone-services", "config-name-prefix": "whitehotstoneServices", "artifact-id": "whitehotstone-services"}
+
+                ],
+
+                "config-names": {
+                    "pattern-masked-incoming": "masked.incoming.data.pattern",
+                    "pattern-masked-outcoming": "masked.outcoming.data.pattern",
+                    "pattern-hidden-incoming": "hidden.incoming.data.pattern",
+                    "pattern-hidden-outcoming": "hidden.outcoming.data.pattern"
+                }
+            }
+        }
+    }
+}
