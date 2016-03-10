@@ -47,7 +47,7 @@ class ServiceInterfaceVisitor implements Visitor<Element, Vertex<Element>> {
 
         var operationElementType = path.get(1).object.name
 
-        val message = path.get(2)
+//        val message = path.get(2)
         // Dirty hack for T-HOP async messaging
 //        if (message.object != null) {
 //            val messageName = message.object.getAttributeValue('name')
@@ -58,7 +58,7 @@ class ServiceInterfaceVisitor implements Visitor<Element, Vertex<Element>> {
 //        }
         // Dirty hack
 
-        val messagePart = path.get(3)
+//        val messagePart = path.get(3)
 
         val epath = path.subList(4, path.size)
 

@@ -1,7 +1,6 @@
 package org.whitehotstone.security.wsdl.crawler.model.graph
 
 import java.util.ArrayList
-import org.apache.commons.collections4.list.TreeList
 
 import static extension com.google.common.base.Preconditions.checkArgument
 import static extension com.google.common.base.Preconditions.checkNotNull

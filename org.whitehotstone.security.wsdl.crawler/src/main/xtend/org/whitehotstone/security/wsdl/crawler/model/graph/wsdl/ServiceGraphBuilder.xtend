@@ -19,7 +19,6 @@ import static extension com.google.common.base.Preconditions.checkState
 import static extension org.whitehotstone.security.wsdl.crawler.xml.NamespaceUtils.stdNamespaces
 import static extension org.whitehotstone.security.wsdl.crawler.xml.XPaths.xpath
 import static extension org.whitehotstone.security.wsdl.crawler.xml.XPaths.xpathr
-import static extension org.whitehotstone.security.wsdl.crawler.xml.XPaths.xpathChildren
 import static extension org.whitehotstone.security.wsdl.crawler.xml.XmlUtils.aname
 import static extension org.whitehotstone.security.wsdl.crawler.xml.XmlUtils.ereference
 
@@ -107,7 +106,7 @@ class ServiceGraphBuilder {
         for (part : parts) {
             val elementRef = part.ereference('element')
             val elementNamespace = elementRef.key
-            val elementName = elementRef.value
+//            val elementName = elementRef.value
 
             var schemas = wsdl.schemas.get(elementNamespace)
             if (schemas.nullOrEmpty) schemas = wsdl.schemas.values.filter [

@@ -12,7 +12,6 @@ import com.google.common.base.Splitter
 import com.google.common.collect.ImmutableSet
 import com.google.common.collect.Multimap
 
-import org.whitehotstone.security.wsdl.crawler.cli.Parameters
 import org.whitehotstone.security.wsdl.crawler.model.WsdlAdapter
 import org.whitehotstone.security.wsdl.crawler.model.configuration.Configuration
 import org.whitehotstone.security.wsdl.crawler.model.graph.wsdl.ServiceGraphBuilder
@@ -20,7 +19,6 @@ import org.whitehotstone.security.wsdl.crawler.model.graph.DFSDigraphTraversal
 import org.whitehotstone.security.wsdl.crawler.model.graph.wsdl.ServiceInterfaceVisitor
 import org.whitehotstone.security.wsdl.crawler.model.ServiceMiningResult
 import org.whitehotstone.security.wsdl.crawler.model.ServiceDefinitionMiningResult
-import org.whitehotstone.security.wsdl.crawler.common.Suppliers
 
 import static org.whitehotstone.security.wsdl.crawler.xml.StdNamespace.*
 
@@ -33,13 +31,12 @@ import static extension org.whitehotstone.security.wsdl.crawler.xml.XmlUtils.loa
 
 class Functions {
 
-    @Inject
-    Parameters parameters
+//    @Inject
+//    Parameters parameters
     @Inject
     Configuration configuration
 
     static val LINE_SEPARATOR = System.lineSeparator
-    val static P_SUPPLIER = new Suppliers.ListSupplier<Pair<String, String>>
 
     val HANDLE_WSDL_SOURCE_2 = [ Path sourcePath |
         val path = sourcePath.toRealPath

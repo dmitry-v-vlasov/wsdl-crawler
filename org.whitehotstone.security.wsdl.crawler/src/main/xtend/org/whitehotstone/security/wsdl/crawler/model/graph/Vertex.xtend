@@ -38,10 +38,10 @@ class Vertex<O> {
     }
 
     override public boolean equals(Object other) {
-        other instanceof Vertex && ((other as Vertex).index == this.index && (other as Vertex).object == this.object)
+        Vertex.isInstance(other) && ((other as Vertex<O>).index == this.index && (other as Vertex<O>).object == this.object)
     }
 
     def boolean similar(Object other) {
-        other instanceof Vertex && ((other as Vertex).object == this.object)
+        Vertex.isInstance(other) && ((other as Vertex<O>).object == this.object)
     }
 }

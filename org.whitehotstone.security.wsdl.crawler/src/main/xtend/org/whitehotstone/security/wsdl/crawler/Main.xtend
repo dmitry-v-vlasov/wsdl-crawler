@@ -9,21 +9,19 @@ import org.whitehotstone.security.wsdl.crawler.beans.BindingModule
 import org.whitehotstone.security.wsdl.crawler.cli.Parameters
 import org.whitehotstone.security.wsdl.crawler.handling.FunctionsFactory
 import org.whitehotstone.security.wsdl.crawler.io.CollectingExecutingFileVisitor
-import org.whitehotstone.security.wsdl.crawler.logging.Markers
 import org.whitehotstone.security.wsdl.crawler.model.configuration.Configuration
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
 
 import static extension java.nio.file.Files.newBufferedReader
 import static extension java.nio.file.Files.walkFileTree
-import static extension org.slf4j.LoggerFactory.getLogger
 import java.nio.file.Files
 import java.nio.file.StandardOpenOption
 
 class Main {
-    static val LOGGER = Main.logger
-    static val MAIN = Markers.MAIN.instance
-    static val MAIN_EXEC = Markers.MAIN_EXEC.instance
+    // static val LOGGER = Main.logger
+    // static val MAIN = Markers.MAIN.instance
+    // static val MAIN_EXEC = Markers.MAIN_EXEC.instance
     static var Injector INJECTOR
 
     def static void main(String[] arguments) {
@@ -52,8 +50,8 @@ class Main {
 
     @Inject
     Parameters parameters
-    @Inject
-    Configuration configuration
+//    @Inject
+//    Configuration configuration
     @Inject
     FunctionsFactory ffactory
 
